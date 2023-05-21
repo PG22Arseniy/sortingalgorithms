@@ -1,0 +1,17 @@
+.sort-array{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px; 
+}
+
+.sort-array .number {
+    margin: 1rem;  
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}

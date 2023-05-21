@@ -3,3 +3,7 @@ export enum SortingAlgorithms {
     INSERTION,
     SELECTION
 }
+
+export type ArrayObjectProps = {
+    ArrayToSort: number[]
+}
