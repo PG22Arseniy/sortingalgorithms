@@ -1,15 +1,10 @@
-import { ArrayObjectProps, SortingAlgorithms } from "../type";
+import { ArrayObjectProps, SortingArrayProps } from "../type";
 import NumberComponent from "./NumberComponent";
 import "../styles/SortingArray.css" 
 import { CustomButton } from "./CustomButton";
-
 import {useEffect, useState} from 'react'
-import { Highlight } from "../global";
+import { Highlight, HighlightWithTime } from "../global";
 
-type SortingArrayProps = {
-    algorithm: SortingAlgorithms,
-    ArrayLength: number
-}
 
 
 function shuffle(array: number[]): number[] {
@@ -32,11 +27,10 @@ function shuffle(array: number[]): number[] {
 
 
 
-export const SortingArray = ({algorithm, ArrayLength} : SortingArrayProps ) => {
+export const BubbleSortingArray = ({ArrayLength} : SortingArrayProps ) => {
 
     const [iterating, setIterating] = useState<boolean>(false)
     const [myObj , setMyObj] = useState<ArrayObjectProps>()
-    const [positionToSort, setPositionToSort] = useState<number>()
 
     useEffect (()=> {
         // setup array of numbers (0 -> chosen length) and shuffle it only on mount
@@ -48,8 +42,6 @@ export const SortingArray = ({algorithm, ArrayLength} : SortingArrayProps ) => {
             }
             ArrayObject.ArrayToSort = shuffle(ArrayObject.ArrayToSort) 
             setMyObj(ArrayObject)
-
-            setPositionToSort(0)
         }
         createArray() 
     },[])
@@ -67,8 +59,8 @@ export const SortingArray = ({algorithm, ArrayLength} : SortingArrayProps ) => {
         const elem1 = document.getElementById(obj.ArrayToSort[num1].toString())
         const elem2 = document.getElementById(obj.ArrayToSort[num2].toString())
 
-        Highlight(elem1!, 3)
-        Highlight(elem2!, 3) 
+        HighlightWithTime(elem1!, 2)
+        HighlightWithTime(elem2!, 2) 
     }
 
     const SwapNumbers = (pos1:number, pos2:number,  obj:ArrayObjectProps) => {
@@ -103,71 +95,11 @@ export const SortingArray = ({algorithm, ArrayLength} : SortingArrayProps ) => {
                 setIterating(false) 
                 return true
             }  
-            BubbleSort( obj ,i+1)
-        }, 3000) 
-
-        return false;
-    }
-
-
-    // --------------------
-    // SELECTION SORT FUNCTION:
-    const  SelectionSort =   (obj:ArrayObjectProps, i: number) : boolean  => {
-
-        setIterating(true)
-        
-        // highlight neighbors
-        HighLightComparedNumbers(i-1, i, obj)
-
-        // Proceed with delay 
-        setTimeout(()=> {
-
-            // compare neghbors
-             if (obj.ArrayToSort[i-1] > obj.ArrayToSort[i]) { 
-
-                // Swap Numbers and update the state to rerender the UI
-                SwapNumbers(i-1, i, obj) 
-                forceRerender()   
-            }
-            if (i >= obj.ArrayToSort.length - 1) { 
-                // iteration is over
-                setPositionToSort(pos => pos! + 1)
-                setIterating(false) 
-                return true
-            }  
-            SelectionSort( obj ,i+1)
-        }, 3000) 
-
-        return false;
-    }
-
-
-    // --------------------
-    // SELECTION SORT FUNCTION:
-    const  InsertionSort =   (obj:ArrayObjectProps, i: number) : boolean  => {
-
-        setIterating(true)
-        
-        // highlight neighbors
-        HighLightComparedNumbers(i-1, i, obj)
-
-        // Proceed with delay 
-        setTimeout(()=> {
-
-            // compare neghbors
-             if (obj.ArrayToSort[i-1] > obj.ArrayToSort[i]) { 
-
-                // Swap Numbers and update the state to rerender the UI
-                SwapNumbers(i-1, i, obj) 
-                forceRerender()   
-            }
-            if (i >= obj.ArrayToSort.length - 1) { 
-                // iteration is over
-                setIterating(false) 
-                return true
-            }  
-            InsertionSort( obj ,i+1)
-        }, 3000) 
+            setTimeout(()=> {
+                BubbleSort( obj ,i+1) 
+            }, 1000)
+            
+        }, 1000) 
 
         return false;
     }
@@ -177,27 +109,8 @@ export const SortingArray = ({algorithm, ArrayLength} : SortingArrayProps ) => {
     // Next Iteration of the sort:
     const  NextStep = () => {
 
-        if (!myObj) return
-
-        switch (algorithm) {
-            case SortingAlgorithms.BUBBLE:
-
-                BubbleSort(myObj, 1)
-                break;
-
-            case SortingAlgorithms.INSERTION:
-                InsertionSort(myObj, 1)
-                break;
-
-            case SortingAlgorithms.SELECTION:
-                SelectionSort(myObj, positionToSort!)
-                break;
-
-            default:
-                break; 
-        }
-
-
+        BubbleSort(myObj!, 1)
+        
     }
  
 
@@ -207,8 +120,7 @@ export const SortingArray = ({algorithm, ArrayLength} : SortingArrayProps ) => {
         <div className="sort-array" id="sort-array">
             {myObj?.ArrayToSort.map (num => ( 
                 <div key={num}> {
-                    NumberComponent(num, `${num}`)
-                    
+                    NumberComponent(num, `${num}`, false)
                 } </div>  
             ))} 
 

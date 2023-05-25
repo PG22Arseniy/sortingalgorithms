@@ -1,4 +1,4 @@
-export const Highlight = (elem: HTMLElement, time:number, prevColor:string = "red" ,color:string = "chartreuse") => {
+export const HighlightWithTime = (elem: HTMLElement, time:number, prevColor:string = "red" ,color:string = "chartreuse") => {
     
     elem.style.backgroundColor = color;
     setTimeout(()=>{
@@ -6,6 +6,12 @@ export const Highlight = (elem: HTMLElement, time:number, prevColor:string = "re
     }, time* 1000)
 }
 
-const StopHighLight = (elem: HTMLElement, prevColor:string) => {
+export const StopHighLight = (elem: HTMLElement, prevColor:string) => {
     elem.style.backgroundColor = prevColor;  
 }
+
+export const Highlight = (elem: HTMLElement ,color:string = "chartreuse") => {
+    
+    elem.style.backgroundColor = color;
+
+} 

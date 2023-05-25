@@ -1,5 +1,5 @@
 import { Layout } from "../components/Layout";
-import { SortingArray } from "../components/BubbleSortingArray";
+import { BubbleSortingArray } from "../components/BubbleSortingArray";
 import { SortingAlgorithms } from "../type";
 
 export const Bubble = () => { 
@@ -9,7 +9,7 @@ export const Bubble = () => {
             <h1> Sorting Algorithm with bubble </h1> 
 
             <div>
-                <SortingArray algorithm={SortingAlgorithms.BUBBLE} ArrayLength={7}/> 
+                <BubbleSortingArray  ArrayLength={7}/> 
             </div>
 
 

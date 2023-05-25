@@ -7,3 +7,9 @@ export enum SortingAlgorithms {
 export type ArrayObjectProps = {
     ArrayToSort: number[]
 }
+
+
+
+export type SortingArrayProps = {
+    ArrayLength: number
+}

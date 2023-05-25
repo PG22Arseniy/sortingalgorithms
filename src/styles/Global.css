@@ -1,3 +1,49 @@
 h1 {
     text-align: center; 
 }
+
+body{
+    min-height: 100vh; 
+}
+
+main{
+    min-height: 80vh;   
+}
+
+
+.minIcon{
+    width: 40px;
+    height: 25px;
+    border-radius: 4rem;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    background-color: magenta; 
+
+    /* position: absolute; */
+
+    text-align: center;
+    font-size: small;
+    padding-top: 5px; 
+}
+
+.content {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+.currentData {
+    display:  flex;
+
+}
+.dataSection { 
+    margin: 2rem; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+}
+
+.hidden {
+    display: none; 
+}

@@ -1,6 +1,6 @@
 import { Layout } from "../components/Layout";
-import { SortingArray } from "../components/BubbleSortingArray";
 import { SortingAlgorithms } from "../type";
+import { InsertionSortingArray } from "../components/InsertionSortingArray";
 
 
 export const Insertion = () => {
@@ -10,7 +10,7 @@ export const Insertion = () => {
             <h1> Sorting Algorithm with insertion </h1> 
 
             <div>
-            <SortingArray algorithm={SortingAlgorithms.INSERTION} ArrayLength={7}/> 
+            <InsertionSortingArray  ArrayLength={7}/> 
             </div>
         </Layout>
     )
