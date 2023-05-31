@@ -11,8 +11,8 @@ export const Selection = () => {
             <div>
                 <SelectionSortingArray ArrayLength={7}/> 
             </div>
-
-            <div className = "colorsExplained">
+ 
+            {/* <div className = "colorsExplained">
                 <h2> What do these colors mean: </h2>
                 <ul>
                     <li>
@@ -48,7 +48,7 @@ export const Selection = () => {
                         </p>
                     </li> 
                 </ul>
-            </div>    
+            </div>     */}
         </Layout>
     )
 }
